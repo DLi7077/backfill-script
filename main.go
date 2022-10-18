@@ -13,20 +13,21 @@ import (
 
 //https://stackoverflow.com/questions/24455147/how-do-i-send-a-json-string-in-a-post-request-in-go
 func PutRequest(jsonString string){
-	const token = "<INSERT_AUTH_TOKEN>"
+	const token = "<INSERT_AUTH_TOKEN>";
 
-	const backfillURL = "http://localhost:3001/api/backfill/documents"
-	var jsonStr = []byte(jsonString)
-	req, _ := http.NewRequest("PUT", backfillURL, bytes.NewBuffer(jsonStr))
-	req.Header.Set("Authorization", token)
-	req.Header.Set("Content-Type", "application/json")
+	const backfillURL = "http://localhost:3001/api/backfill/documents";
+	var jsonStr = []byte(jsonString);
+	req, _ := http.NewRequest("PUT", backfillURL, bytes.NewBuffer(jsonStr));
+	req.Header.Set("Authorization", token);
+	req.Header.Set("Content-Type", "application/json");
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
+	client := &http.Client{};
+	resp, err := client.Do(req);
+
 	if err != nil {
 			panic(err)
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close();
 
 	fmt.Println("response Status:", resp.Status)
 	// fmt.Println("response Headers:", resp.Header)
@@ -85,16 +86,17 @@ func main(){
 	}
 
 	csvReader := csv.NewReader(file);
-	data, err := csvReader.ReadAll()
+	data, err := csvReader.ReadAll();
+
   if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close();
-	start := time.Now()
+	start := time.Now();
 
 	parseRowsAndPUT(data);
 
-	duration := time.Since(start)
+	duration := time.Since(start);
 
-	fmt.Println(duration)
+	fmt.Println(duration);
 }
