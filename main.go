@@ -89,7 +89,7 @@ func main(){
 	data, err := csvReader.ReadAll();
 
   if err != nil {
-		log.Fatal(err)
+		log.Fatal(err);
 	}
 	defer file.Close();
 	start := time.Now();
