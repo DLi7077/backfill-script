@@ -35,8 +35,8 @@ func PutRequest(jsonString string){
 }
 
 type snapshotAttributes struct {
-	Id string 						`json:"_id"`
-	Competitor_id string 	`json:"competitor_id"`
+	Id string	`json:"_id"`
+	Competitor_id string	`json:"competitor_id"`
 }
 
 func parseRowsAndPUT(snapshotRows[][]string) {
@@ -81,7 +81,7 @@ func main(){
 
 	file, err := os.Open(file_name)
 	if err != nil {
-			log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	csvReader := csv.NewReader(file);
